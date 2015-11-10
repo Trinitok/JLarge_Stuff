@@ -1,0 +1,47 @@
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+
+public class ButtonExample {
+	
+	// the main method for running the frame
+	public static void main(String[] args){
+		
+		//  the frame that will hold the button
+		JFrame frame = new JFrame("Test");
+		
+		//  the button to press
+		JButton button = new JButton("Press me");
+		
+		//  the method to make the button 'listen' for when the mouse does something
+		//  can also be made as a separate method
+		button.addMouseListener(new MouseAdapter() {
+
+			//  the method for checking to see if the mouse was clicked
+			//  can be made into a separate method
+			//  can also be for if mouse enters a certain x and y
+			public void mousePressed(MouseEvent e) {
+				
+				//  what should happen when the mouse is clicked?
+				JOptionPane.showMessageDialog(frame, "I'm going to smack you");
+
+			}
+		});
+		
+		//  declare these for your frame so it knows where it will show up on the screen, and how large it will be
+		//  all variables are relative to the upper left corner
+		frame.setBounds(700, 100, 500, 500);
+		
+		//  components are stored in an array of components that can be accessed and changed around as necessary
+		frame.add(button);
+		
+		//  the default is false.  Set to true if you want to see it
+		frame.setVisible(true);
+		
+	}
+
+}
