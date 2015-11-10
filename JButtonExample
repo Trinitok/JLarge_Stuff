@@ -1,3 +1,4 @@
+//  Eclipse will automatically do imports for you
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
