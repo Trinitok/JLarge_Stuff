@@ -1,10 +1,12 @@
-//  Eclipse will automatically do imports for you
+import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 
 public class ButtonExample {
@@ -15,8 +17,20 @@ public class ButtonExample {
 		//  the frame that will hold the button
 		JFrame frame = new JFrame("Test");
 		
+		// set the layout type for this
+		frame.setLayout(new BorderLayout());
+		
 		//  the button to press
 		JButton button = new JButton("Press me");
+		
+		//  add a label to tell what to do
+		frame.add(new JLabel("Type stuff below me!"), BorderLayout.CENTER);
+		
+		//  add in a text area to type in
+		JTextField textarea = new JTextField();
+		
+		//  add it to the frame
+		frame.add(textarea, BorderLayout.SOUTH);
 		
 		//  the method to make the button 'listen' for when the mouse does something
 		//  can also be made as a separate method
@@ -28,7 +42,7 @@ public class ButtonExample {
 			public void mousePressed(MouseEvent e) {
 				
 				//  what should happen when the mouse is clicked?
-				JOptionPane.showMessageDialog(frame, "I'm going to smack you");
+				JOptionPane.showMessageDialog(frame, textarea.getText());
 
 			}
 		});
@@ -38,7 +52,7 @@ public class ButtonExample {
 		frame.setBounds(700, 100, 500, 500);
 		
 		//  components are stored in an array of components that can be accessed and changed around as necessary
-		frame.add(button);
+		frame.add(button, BorderLayout.EAST);
 		
 		//  the default is false.  Set to true if you want to see it
 		frame.setVisible(true);
