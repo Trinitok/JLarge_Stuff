@@ -1,0 +1,23 @@
+/**
+ * 
+ */
+package DemoThreads.VisualVM;
+
+/**
+ * Class to create a ThreadFrame object
+ *
+ * @author allennp.
+ *         Created Oct 7, 2013.
+ */
+public class Main {
+	/**
+	 * Instantiates a ThreadFrame
+	 *
+	 * @param args
+	 */
+	public static void main(String[] args)
+	{
+		new ThreadFrame();
+	}
+
+}
