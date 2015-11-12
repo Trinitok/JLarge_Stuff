@@ -1,0 +1,116 @@
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.GroupLayout;
+
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+
+/**
+ * A frame with four buttons shown in a given layout
+ *
+ * @author mayja1.
+ *         Created Oct 27, 2013.
+ */
+public class GUILayoutDemoFrame extends JFrame implements ActionListener{
+	private int layout;
+	/**
+	 * Constructs a frame with four buttons in a layout determined by the inputed int
+	 *
+	 */
+	public GUILayoutDemoFrame(int i){
+	this.layout=i;
+	this.setSize(new Dimension(800, 800));
+	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	this.setTitle("Layout Demo");
+	JButton button1= new JButton("Border Layout Demo");
+	JButton button2= new JButton("Flow Layout Demo");
+	JButton button3= new JButton("Grid Layout Demo");
+	JButton button4= new JButton("BoxLayout Demo");
+	
+	button1.addActionListener(this);
+	button2.addActionListener(this);
+	button3.addActionListener(this);
+	button4.addActionListener(this);
+	//displays the buttons in a border layout
+	if(this.layout==0){
+		this.setTitle("Border Layout Demo");
+		this.setLayout(new BorderLayout());
+		this.add(button1,BorderLayout.NORTH);
+		this.add(button4,BorderLayout.EAST);
+		this.add(button3,BorderLayout.CENTER);
+		this.add(button2,BorderLayout.WEST);
+	}
+	
+	//displays the buttons in a flow layout
+	else if(this.layout==1){
+		this.setTitle("Flow Layout Demo");
+		this.setLayout(new FlowLayout());
+		this.add(button1);
+		this.add(button2);
+		this.add(button3);
+		this.add(button4);
+	}
+	//displays the buttons in a grid layout
+	else if(this.layout==2){
+		this.setTitle("Grid Layout Demo");
+		this.setLayout(new GridLayout(2,2));
+		this.add(button1);
+		this.add(button2);
+		this.add(button3);
+		this.add(button4);
+	}
+	//displays the buttons in a boxlayout
+	else{
+	this.setTitle("BoxLayout Demo");
+	BoxLayout layout = new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS);
+	this.setLayout(layout);
+	this.add(button1);
+	this.add(button2);
+	this.add(button3);
+	this.add(button4);
+	}
+	
+	this.setVisible(true);
+	}
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		if(((JButton)arg0.getSource()).getText().equals("Border Layout Demo")){
+			this.layout=0;
+		}
+		if(((JButton)arg0.getSource()).getText().equals("Flow Layout Demo")){
+			this.layout=1;
+		}
+		if(((JButton)arg0.getSource()).getText().equals("Grid Layout Demo")){
+			this.layout=2;
+	
+		}
+		if(((JButton)arg0.getSource()).getText().equals("BoxLayout Demo")){
+			this.layout=3;
+	
+		}
+		GUILayoutDemoFrame frame0= new GUILayoutDemoFrame(this.layout);
+		this.dispose();
+	}
+	/**
+	 * Constructs four frames, one with each type of layout
+	 *
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+		
+		GUILayoutDemoFrame frame0= new GUILayoutDemoFrame(0);
+		
+		
+	}
+
+	
+}
