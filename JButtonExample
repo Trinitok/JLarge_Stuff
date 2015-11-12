@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
@@ -14,23 +15,30 @@ public class ButtonExample {
 	// the main method for running the frame
 	public static void main(String[] args){
 		
-		//  the frame that will hold the button
+		//  the frame that will hold the demo
 		JFrame frame = new JFrame("Test");
 		
+		
+		//  a panel that will hold all the components.
+		//  build a frame then add a panel to it.  This is so that you can easily modify things
+		JPanel panel = new JPanel();
+		
+		
 		// set the layout type for this
-		frame.setLayout(new BorderLayout());
+		//  BorderLayout will set sections in the top(North), center(Center), bottom(South), left(West), right(East) that you can add components to
+		panel.setLayout(new BorderLayout());
 		
 		//  the button to press
 		JButton button = new JButton("Press me");
 		
-		//  add a label to tell what to do
-		frame.add(new JLabel("Type stuff below me!"), BorderLayout.CENTER);
+		//  add a label to tell the user what to do
+		panel.add(new JLabel("Type stuff in the area below me!"), BorderLayout.CENTER);
 		
 		//  add in a text area to type in
 		JTextField textarea = new JTextField();
 		
 		//  add it to the frame
-		frame.add(textarea, BorderLayout.SOUTH);
+		panel.add(textarea, BorderLayout.SOUTH);
 		
 		//  the method to make the button 'listen' for when the mouse does something
 		//  can also be made as a separate method
@@ -52,10 +60,22 @@ public class ButtonExample {
 		frame.setBounds(700, 100, 500, 500);
 		
 		//  components are stored in an array of components that can be accessed and changed around as necessary
-		frame.add(button, BorderLayout.EAST);
+		panel.add(button, BorderLayout.EAST);
+		
+		// add the panel to the frame once all components have been added to the panel so that nothing is left out
+		frame.add(panel);
 		
 		//  the default is false.  Set to true if you want to see it
 		frame.setVisible(true);
+		
+		
+		//  Alternative to defining size.
+		//  Will make the frame the EXACT size needed to contain everything neatly with no overlap/overflow
+//		frame.pack();
+		
+		
+		//  Make it so that it will close upon clicking the red x of the frame
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
 
